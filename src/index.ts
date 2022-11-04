@@ -6,6 +6,7 @@ import { sync as delFile } from "rimraf"
 import picocolors from "picocolors"
 import milli from "pretty-ms"
 
+
 /**
  * The plugin's options.
  */
@@ -19,6 +20,16 @@ export interface RemoteContentPluginOptions {
      * CLI only mode.
      */
     noRuntimeDownloads?: boolean
+
+    /**
+     * The maximum number of concurrent requests.
+     */
+    maxRequestsCount:number
+
+    /**
+     * The number of milliseconds to wait to check queue.
+     */
+    intervalMS:number
 
     /**
      * The base URL for the source of the content.
@@ -59,6 +70,8 @@ export interface RemoteContentPluginOptions {
         filename: string,
         content: string
     ): { filename?: string; content?: string } | undefined
+
+
 }
 
 export interface Collectable {
@@ -77,9 +90,41 @@ export default async function pluginRemoteContent(
         documents,
         noRuntimeDownloads = false,
         performCleanup = true,
+        maxRequestsCount = 5,
+        intervalMS = 100,
         requestConfig = {},
         modifyContent = () => undefined,
     } = options
+
+    let pendingRequests: number = 0;
+
+
+    /**
+     * Axios Request Interceptor
+    */
+    axios.interceptors.request.use(function (config:AxiosRequestConfig) {
+        return new Promise((resolve, reject) => {
+
+            let interval = setInterval(() => {
+                if (pendingRequests < maxRequestsCount) {
+                    pendingRequests++
+                    clearInterval(interval)
+                    resolve(config)
+                }
+            }, intervalMS)
+        })
+    });
+
+    /**
+     * Axios Response Interceptor
+     */
+    axios.interceptors.response.use(function (response) {
+        pendingRequests = Math.max(0, pendingRequests - 1)
+        return Promise.resolve(response)
+    }, function (error) {
+        pendingRequests = Math.max(0, pendingRequests - 1)
+        return Promise.reject(error)
+    })
 
     if (!name) {
         throw new Error(
@@ -139,7 +184,7 @@ export default async function pluginRemoteContent(
 
         for (const { identifier, url } of c) {
             //#region Run modifyContent (and fetch the data)
-            let content = (await axios({ url, ...requestConfig })).data
+            let content = (await axios( {url, ...requestConfig} )).data
             let newIdent = identifier
 
             const called = modifyContent?.(newIdent, content)
