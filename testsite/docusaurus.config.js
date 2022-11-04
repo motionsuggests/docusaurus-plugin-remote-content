@@ -108,12 +108,217 @@ module.exports = {
         [
             require.resolve("../build/index.js"),
             {
-                name: "docs",
-                id: "basicTest",
-                outDir: "docs",
-                sourceBaseUrl:
-                    "https://raw.githubusercontent.com/rdilweb/rdil.rocks/master/docs/docs",
-                documents: ["api.md"],
+                name: 'docusaurusOne', // used by CLI, must be path safe
+                id: "docusaurusOne",
+                sourceBaseUrl: 'https://raw.githubusercontent.com/facebook/docusaurus/main/website/docs/', // the base url for the markdown (gets prepended to all of the documents when fetching)
+                outDir: 'docs/docusaurusOne', // the base directory to output to.
+                documents: [
+                    'browser-support.md',
+                    'cli.md',
+                    'configuration.md',
+                    'docusaurus-core.md',
+                    'installation.md',
+                    'search.md',
+                    'seo.md',
+                    'static-assets.md',
+                    'styling-layout.md',
+                    'swizzling.md',
+                    'typescript-support.md',
+                    'using-plugins.md',
+                    'advanced/client.md',
+                    'advanced/index.md',
+                    'advanced/plugins.md',
+                    'advanced/ssg.md',
+                    'migration/migration-automated.md',
+                    'migration/migration-overview.md',
+                    'migration/migration-translated-sites.md',
+                    'migration/migration-versioned-sites.md',
+                    'i18n/i18n-git.md',
+                    'i18n/i18n-introduction.md',
+                    'i18n/i18n-tutorial.md',
+                    'guides/creating-pages.md',
+                    'guides/whats-next.md'
+                ], // the file names to download
+            },
+        ],
+        [
+            require.resolve("../build/index.js"),
+            {
+                name: 'docusaurusTwo', // used by CLI, must be path safe
+                id: "docusaurusTwo",
+                sourceBaseUrl: 'https://raw.githubusercontent.com/facebook/docusaurus/main/website/docs/', // the base url for the markdown (gets prepended to all of the documents when fetching)
+                outDir: 'docs/docusaurusTwo', // the base directory to output to.
+                documents: [
+                    'browser-support.md',
+                    'cli.md',
+                    'configuration.md',
+                    'docusaurus-core.md',
+                    'installation.md',
+                    'search.md',
+                    'seo.md',
+                    'static-assets.md',
+                    'styling-layout.md',
+                    'swizzling.md',
+                    'typescript-support.md',
+                    'using-plugins.md',
+                    'advanced/client.md',
+                    'advanced/index.md',
+                    'advanced/plugins.md',
+                    'advanced/ssg.md',
+                    'migration/migration-automated.md',
+                    'migration/migration-overview.md',
+                    'migration/migration-translated-sites.md',
+                    'migration/migration-versioned-sites.md',
+                    'i18n/i18n-git.md',
+                    'i18n/i18n-introduction.md',
+                    'i18n/i18n-tutorial.md',
+                    'guides/creating-pages.md',
+                    'guides/whats-next.md'
+                ], // the file names to download
+            },
+        ],
+        [
+            require.resolve("../build/index.js"),
+            {
+                name: 'docusaurusThree', // used by CLI, must be path safe
+                id: "docusaurusThree",
+                sourceBaseUrl: 'https://raw.githubusercontent.com/facebook/docusaurus/main/website/docs/', // the base url for the markdown (gets prepended to all of the documents when fetching)
+                outDir: 'docs/docusaurusThree', // the base directory to output to.
+                documents: [
+                    'browser-support.md',
+                    'cli.md',
+                    'configuration.md',
+                    'docusaurus-core.md',
+                    'installation.md',
+                    'search.md',
+                    'seo.md',
+                    'static-assets.md',
+                    'styling-layout.md',
+                    'swizzling.md',
+                    'typescript-support.md',
+                    'using-plugins.md',
+                    'advanced/client.md',
+                    'advanced/index.md',
+                    'advanced/plugins.md',
+                    'advanced/ssg.md',
+                    'migration/migration-automated.md',
+                    'migration/migration-overview.md',
+                    'migration/migration-translated-sites.md',
+                    'migration/migration-versioned-sites.md',
+                    'i18n/i18n-git.md',
+                    'i18n/i18n-introduction.md',
+                    'i18n/i18n-tutorial.md',
+                    'guides/creating-pages.md',
+                    'guides/whats-next.md'
+                ], // the file names to download
+            },
+        ],
+        [
+            require.resolve("../build/index.js"),
+            {
+                name: 'docusaurusFour', // used by CLI, must be path safe
+                id: "docusaurusFour",
+                sourceBaseUrl: 'https://raw.githubusercontent.com/facebook/docusaurus/main/website/docs/', // the base url for the markdown (gets prepended to all of the documents when fetching)
+                outDir: 'docs/docusaurusFour', // the base directory to output to.
+                documents: [
+                    'browser-support.md',
+                    'cli.md',
+                    'configuration.md',
+                    'docusaurus-core.md',
+                    'installation.md',
+                    'search.md',
+                    'seo.md',
+                    'static-assets.md',
+                    'styling-layout.md',
+                    'swizzling.md',
+                    'typescript-support.md',
+                    'using-plugins.md',
+                    'advanced/client.md',
+                    'advanced/index.md',
+                    'advanced/plugins.md',
+                    'advanced/ssg.md',
+                    'migration/migration-automated.md',
+                    'migration/migration-overview.md',
+                    'migration/migration-translated-sites.md',
+                    'migration/migration-versioned-sites.md',
+                    'i18n/i18n-git.md',
+                    'i18n/i18n-introduction.md',
+                    'i18n/i18n-tutorial.md',
+                    'guides/creating-pages.md',
+                    'guides/whats-next.md'
+                ], // the file names to download
+            },
+        ],
+        [
+            require.resolve("../build/index.js"),
+            {
+                name: 'docusaurusFive', // used by CLI, must be path safe
+                id: "docusaurusFive",
+                sourceBaseUrl: 'https://raw.githubusercontent.com/facebook/docusaurus/main/website/docs/', // the base url for the markdown (gets prepended to all of the documents when fetching)
+                outDir: 'docs/docusaurusFive', // the base directory to output to.
+                documents: [
+                    'browser-support.md',
+                    'cli.md',
+                    'configuration.md',
+                    'docusaurus-core.md',
+                    'installation.md',
+                    'search.md',
+                    'seo.md',
+                    'static-assets.md',
+                    'styling-layout.md',
+                    'swizzling.md',
+                    'typescript-support.md',
+                    'using-plugins.md',
+                    'advanced/client.md',
+                    'advanced/index.md',
+                    'advanced/plugins.md',
+                    'advanced/ssg.md',
+                    'migration/migration-automated.md',
+                    'migration/migration-overview.md',
+                    'migration/migration-translated-sites.md',
+                    'migration/migration-versioned-sites.md',
+                    'i18n/i18n-git.md',
+                    'i18n/i18n-introduction.md',
+                    'i18n/i18n-tutorial.md',
+                    'guides/creating-pages.md',
+                    'guides/whats-next.md'
+                ], // the file names to download
+            },
+        ],
+        [
+            require.resolve("../build/index.js"),
+            {
+                name: 'docusaurusSix', // used by CLI, must be path safe
+                id: "docusaurusSix",
+                sourceBaseUrl: 'https://raw.githubusercontent.com/facebook/docusaurus/main/website/docs/', // the base url for the markdown (gets prepended to all of the documents when fetching)
+                outDir: 'docs/docusaurusSix', // the base directory to output to.
+                documents: [
+                    'browser-support.md',
+                    'cli.md',
+                    'configuration.md',
+                    'docusaurus-core.md',
+                    'installation.md',
+                    'search.md',
+                    'seo.md',
+                    'static-assets.md',
+                    'styling-layout.md',
+                    'swizzling.md',
+                    'typescript-support.md',
+                    'using-plugins.md',
+                    'advanced/client.md',
+                    'advanced/index.md',
+                    'advanced/plugins.md',
+                    'advanced/ssg.md',
+                    'migration/migration-automated.md',
+                    'migration/migration-overview.md',
+                    'migration/migration-translated-sites.md',
+                    'migration/migration-versioned-sites.md',
+                    'i18n/i18n-git.md',
+                    'i18n/i18n-introduction.md',
+                    'i18n/i18n-tutorial.md',
+                    'guides/creating-pages.md',
+                    'guides/whats-next.md'
+                ], // the file names to download
             },
         ],
         [
@@ -161,4 +366,9 @@ ${content}`
             },
         ],
     ],
+}
+
+function transformUrls( content, url, replacment ) {
+    let regEx = new RegExp(url, 'g');
+    return content.replace(regEx, replacment);
 }
