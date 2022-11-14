@@ -3,7 +3,7 @@
     "version": "4.0.0",
     "description": "A Docusaurus v2 plugin that allows you to fetch content from remote sources!",
     "main": "build/index.js",
-    "repository": "https://github.com/rdilweb/docusaurus-plugin-remote-content.git",
+    "repository": "https://github.com/motionsuggests/docusaurus-plugin-remote-content.git",
     "author": "Reece Dunham <me@rdil.rocks>",
     "license": "MIT",
     "types": "build/index.d.ts",
