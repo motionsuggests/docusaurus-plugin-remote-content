@@ -102,7 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
-build
+# build
 
 .yarn/cache
 .yarn/install-state.gz
