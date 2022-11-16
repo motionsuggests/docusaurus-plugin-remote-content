@@ -5,8 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
 const fs_1 = require("fs");
-const https_1 = __importDefault(require("https"));
-const http_1 = __importDefault(require("http"));
 const path_1 = require("path");
 const rimraf_1 = require("rimraf");
 const picocolors_1 = __importDefault(require("picocolors"));
@@ -77,8 +75,6 @@ async function pluginRemoteContent(context, options) {
             let content = (await (0, axios_1.default)({
                 url,
                 ...requestConfig,
-                httpAgent: new http_1.default.Agent({ keepAlive: true }),
-                httpsAgent: new https_1.default.Agent({ keepAlive: true })
             })).data;
             let newIdent = identifier;
             const called = modifyContent === null || modifyContent === void 0 ? void 0 : modifyContent(newIdent, content);

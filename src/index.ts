@@ -1,8 +1,6 @@
 import type { LoadContext, Plugin } from "@docusaurus/types"
 import axios, { AxiosRequestConfig } from "axios"
 import { existsSync, writeFileSync, mkdirSync } from "fs"
-import https from "https";
-import http from "http";
 import { join } from "path"
 import { sync as delFile } from "rimraf"
 import picocolors from "picocolors"
@@ -189,8 +187,6 @@ export default async function pluginRemoteContent(
             let content = (await axios( {
                 url,
                 ...requestConfig,
-                httpAgent: new http.Agent({ keepAlive: true }),
-                httpsAgent: new https.Agent({ keepAlive: true })
             } )).data
             let newIdent = identifier
 
