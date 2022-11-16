@@ -72,10 +72,32 @@ async function pluginRemoteContent(context, options) {
         const c = await findCollectables();
         for (const { identifier, url } of c) {
             //#region Run modifyContent (and fetch the data)
-            let content = (await (0, axios_1.default)({
+            let content = await (0, axios_1.default)({
                 url,
                 ...requestConfig,
-            })).data;
+            }).then(function (response) {
+                return response.data;
+            }).catch(function (error) {
+                if (error.response) {
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }
+                else if (error.request) {
+                    // The request was made but no response was received
+                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log(error.request);
+                }
+                else {
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                }
+                console.log(error.config);
+            });
+            ;
             let newIdent = identifier;
             const called = modifyContent === null || modifyContent === void 0 ? void 0 : modifyContent(newIdent, content);
             let cont;
