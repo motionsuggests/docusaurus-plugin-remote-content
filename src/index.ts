@@ -1,6 +1,8 @@
 import type { LoadContext, Plugin } from "@docusaurus/types"
 import axios, { AxiosRequestConfig } from "axios"
 import { existsSync, writeFileSync, mkdirSync } from "fs"
+import https from "https";
+import http from "http";
 import { join } from "path"
 import { sync as delFile } from "rimraf"
 import picocolors from "picocolors"
@@ -91,7 +93,7 @@ export default async function pluginRemoteContent(
         noRuntimeDownloads = false,
         performCleanup = true,
         maxRequestsCount = 5,
-        intervalMS = 100,
+        intervalMS = 10,
         requestConfig = {},
         modifyContent = () => undefined,
     } = options
@@ -184,7 +186,12 @@ export default async function pluginRemoteContent(
 
         for (const { identifier, url } of c) {
             //#region Run modifyContent (and fetch the data)
-            let content = (await axios( {url, ...requestConfig} )).data
+            let content = (await axios( {
+                url,
+                ...requestConfig,
+                httpAgent: new http.Agent({ keepAlive: true }),
+                httpsAgent: new https.Agent({ keepAlive: true })
+            } )).data
             let newIdent = identifier
 
             const called = modifyContent?.(newIdent, content)
